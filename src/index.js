@@ -9,7 +9,6 @@ import thunk from 'redux-thunk';
 import todoItemReducer from "./store/reducers/todoItem";
 import reportWebVitals from './reportWebVitals';
 
-
 const middleware = [thunk];
 
 const rootReducer = combineReducers({

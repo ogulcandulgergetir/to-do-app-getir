@@ -1,7 +1,7 @@
 import React from "react";
 import "./Todo.css";
 
-function Todo({ todo, index, completeTodo, removeTodo }) {
+function Todo({ todo, index, toggleTodo }) {
   return (
     <div
       className="todo"
@@ -11,10 +11,9 @@ function Todo({ todo, index, completeTodo, removeTodo }) {
       {todo.title}
       <div>
       {!todo.completed 
-        ? <button onClick={() => completeTodo(index)}>Complete The Task</button>
-        : <button onClick={() => completeTodo(index)}>Uncomplete</button>
+        ? <button onClick={() => toggleTodo(index)}>Complete The Task</button>
+        : <button onClick={() => toggleTodo(index)}>Uncomplete</button>
       }
-        <button onClick={() => removeTodo(index)}>x</button>
       </div>
     </div>
   );

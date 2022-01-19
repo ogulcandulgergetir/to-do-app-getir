@@ -20,7 +20,7 @@ function TodoForm({ addTodo }) {
         value={value}
         onChange={e => setValue(e.target.value)}
       />
-      <input type="submit" value="Add" />
+      <input style={{ 'marginLeft': "0.5rem" }} type="submit" value="Add Item" />
     </form>
   );
 }

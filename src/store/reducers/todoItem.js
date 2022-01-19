@@ -35,14 +35,6 @@ const todoItemToggle = (state, action) => {
   });
 };
 
-// const todoItemSuccess = (state, action) => {
-//   return updateObject(state, {
-//     todoItem: [...state.todoItem, ...action.data],
-//     error: null,
-//     loading: false,
-//   });
-// };
-
 const todoItemFail = (state, action) => {
   return updateObject(state, {
     error: action.error,

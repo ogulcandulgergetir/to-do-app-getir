@@ -54,7 +54,7 @@ export const fetchTodoItem = () => {
 export const addTodoItem = (item, lastID) => {
   return dispatch => {
     dispatch(todoItemStart());
-    dispatch(todoItemSuccess([{ 'id': lastID + 1, 'title': item, 'completed': false}]));    
+    dispatch(todoItemSuccess([{ id: lastID + 1, title: item, completed: false}]));    
   };
 };
 
