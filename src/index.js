@@ -9,7 +9,6 @@ import thunk from 'redux-thunk';
 import todoItemReducer from "./store/reducers/todoItem";
 import reportWebVitals from './reportWebVitals';
 
-// require('dotenv').config()
 
 const middleware = [thunk];
 

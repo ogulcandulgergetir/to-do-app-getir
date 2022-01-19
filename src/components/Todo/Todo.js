@@ -5,11 +5,15 @@ function Todo({ todo, index, completeTodo, removeTodo }) {
   return (
     <div
       className="todo"
-      style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
+      style={{ backgroundColor: todo.completed ? "rgb(143, 143, 143)" : "rgb(224, 214, 231)",
+               color: todo.completed ? "rgb(90, 90, 90)" : "" }}
     >
-      {todo.text}
+      {todo.title}
       <div>
-        <button onClick={() => completeTodo(index)}>Complete</button>
+      {!todo.completed 
+        ? <button onClick={() => completeTodo(index)}>Complete The Task</button>
+        : <button onClick={() => completeTodo(index)}>Uncomplete</button>
+      }
         <button onClick={() => removeTodo(index)}>x</button>
       </div>
     </div>

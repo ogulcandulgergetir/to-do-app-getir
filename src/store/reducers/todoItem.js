@@ -1,4 +1,4 @@
-import { TODOITEM_START, TODOITEM_SUCCESS, TODOITEM_FAIL, TODOITEM_RESET } from "../actions/actionTypes";
+import { TODOITEM_START, TODOITEM_SUCCESS, TODOITEM_FAIL, TODOITEM_RESET, TODOITEM_TOGGLE } from "../actions/actionTypes";
 import { updateObject } from "../utility";
 
 
@@ -17,11 +17,31 @@ const todoItemStart = (state, action) => {
 
 const todoItemSuccess = (state, action) => {
   return updateObject(state, {
-    todoItem: action.data[0],
+    todoItem: [...state.todoItem, ...action.data],
     error: null,
     loading: false,
   });
 };
+
+const todoItemToggle = (state, action) => {
+  const newTodos = [...state.todoItem];
+  let objIndex = newTodos.findIndex((obj => obj.id == action.data));
+  newTodos[objIndex].completed = !newTodos[objIndex].completed;
+
+  return updateObject(state, {
+    todoItem: newTodos,
+    error: null,
+    loading: false,
+  });
+};
+
+// const todoItemSuccess = (state, action) => {
+//   return updateObject(state, {
+//     todoItem: [...state.todoItem, ...action.data],
+//     error: null,
+//     loading: false,
+//   });
+// };
 
 const todoItemFail = (state, action) => {
   return updateObject(state, {
@@ -43,6 +63,8 @@ const reducer = (state = initialState, action) => {
       return todoItemStart(state, action);
     case TODOITEM_SUCCESS:
       return todoItemSuccess(state, action);
+    case TODOITEM_TOGGLE:
+      return todoItemToggle(state, action);
     case TODOITEM_FAIL:
       return todoItemFail(state, action);
     case TODOITEM_RESET:
